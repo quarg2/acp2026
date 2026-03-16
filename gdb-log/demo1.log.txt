@@ -1,0 +1,118 @@
+(gdb) l
+5       void output(float arr[], int max_index);
+6
+7       // Read n float values from the user, store them in an array
+8       // and find the largest.
+9
+10      int main(void) {
+11          int n, max;
+12          printf("Enter number of values: ");
+13          scanf("%d", &n);
+14
+(gdb) b 10
+Breakpoint 1 at 0x40047f: file demo1.c, line 10.
+(gdb) r
+
+Breakpoint 1, main () at demo1.c:10
+10      int main(void) {
+(gdb) n
+12          printf("Enter number of values: ");
+(gdb) n
+13          scanf("%d", &n);
+(gdb) n
+Enter number of values: 5
+15          float arr[n];
+(gdb) n
+17          input(n, arr);
+(gdb) s
+input (n=5, arr=0x7fffffffd780) at demo1.c:40
+40          for (int i = 0; i < n; i++) {
+(gdb) n
+41              printf("Enter %d value: ", i + 1);
+(gdb) n
+42              scanf("%f", &arr[i]);
+(gdb) n
+Enter 1 value: 3
+40          for (int i = 0; i < n; i++) {
+(gdb) n
+41              printf("Enter %d value: ", i + 1);
+(gdb) n
+42              scanf("%f", &arr[i]);
+(gdb) n
+Enter 2 value: 2
+40          for (int i = 0; i < n; i++) {
+(gdb) n
+41              printf("Enter %d value: ", i + 1);
+(gdb) n
+42              scanf("%f", &arr[i]);
+(gdb) n
+Enter 3 value: 4
+40          for (int i = 0; i < n; i++) {
+(gdb) n
+41              printf("Enter %d value: ", i + 1);
+(gdb) n
+42              scanf("%f", &arr[i]);
+(gdb) n
+Enter 4 value: 5
+40          for (int i = 0; i < n; i++) {
+(gdb) n
+41              printf("Enter %d value: ", i + 1);
+(gdb) n
+42              scanf("%f", &arr[i]);
+(gdb) n
+Enter 5 value: 1
+40          for (int i = 0; i < n; i++) {
+(gdb) n
+44      }
+(gdb) n
+main () at demo1.c:18
+18          max = find_max_index(n, arr);
+(gdb) s
+find_max_index (n=5, arr=0x7fffffffd780) at demo1.c:26
+26          int max = 0;
+(gdb) n
+28          for (int i = 0; i < n; i++)
+(gdb) n
+29              max = (arr[i] > arr[max]) ? i : max;
+(gdb) n
+28          for (int i = 0; i < n; i++)
+(gdb) n
+29              max = (arr[i] > arr[max]) ? i : max;
+(gdb) n
+28          for (int i = 0; i < n; i++)
+(gdb) n
+29              max = (arr[i] > arr[max]) ? i : max;
+(gdb) n
+28          for (int i = 0; i < n; i++)
+(gdb) n
+29              max = (arr[i] > arr[max]) ? i : max;
+(gdb) n
+28          for (int i = 0; i < n; i++)
+(gdb) n
+29              max = (arr[i] > arr[max]) ? i : max;
+(gdb) n
+28          for (int i = 0; i < n; i++)
+(gdb) n
+30          return max;
+(gdb) n
+31      }
+(gdb) n
+main () at demo1.c:19
+19          output(arr, max);
+(gdb) s
+output (arr=0x7fffffffd780, max_index=3) at demo1.c:35
+35          printf("The maximum value is %f at index %d\n", arr[max_index], max_index);
+(gdb) n
+The maximum value is 5.000000 at index 3
+36      }
+(gdb) n
+main () at demo1.c:21
+21          return 0;
+(gdb) n
+22      }
+(gdb) n
+__libc_start_call_main (main=main@entry=0x400476 <main>, argc=argc@entry=1, argv=argv@entry=0x7fffffffd8f8) at ../sysdeps/nptl/libc_start_call_main.h:74
+74        exit (result);
+(gdb) n
+[Inferior 1 (process 438929) exited normally]
+(gdb) quit
