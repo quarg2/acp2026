@@ -34,3 +34,23 @@ void compare_areas(Rectangle r1, Rectangle r2, Rectangle r3) {
         printf("Rectangle 2 has the largest area\n");
     else if (r3.area > r1.area && r3.area > r2.area)
         printf("Rectangle 3 has the largest area\n");
+    else
+        printf("The rectangles have equal areas\n");
+}
+
+
+float calculate_area(Rectangle rect) {
+    return rect.length * rect.width;
+}
+
+Rectangle input(void) {
+    float length, width;
+    Rectangle r = {.length = 0, .width = 0, .area = 0};
+    printf("Enter length and width of rectangle: ");
+    scanf("%f %f", &length, &width);
+
+    r.length = length;
+    r.width = width;
+
+    return r;
+}
