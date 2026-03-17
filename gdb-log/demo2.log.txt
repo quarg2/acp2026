@@ -1,0 +1,130 @@
+Reading symbols from ./demo2.out...
+(gdb) l
+10
+11      Rectangle input(void);
+12      float calculate_area(Rectangle rect);
+13      void compare_areas(Rectangle r1, Rectangle r2, Rectangle r3);
+14
+15      int main(void) {
+16          Rectangle r1 = input();
+17          Rectangle r2 = input();
+18          Rectangle r3 = input();
+19
+(gdb) b 15
+Breakpoint 1 at 0x40048e: file ./../demo2.c, line 16.
+(gdb) r
+
+Breakpoint 1, main () at ./../demo2.c:16
+16          Rectangle r1 = input();
+(gdb) p r1
+$1 = {length = 0, width = -1.03138529e+34, area = 4.59163468e-41}
+(gdb) s
+input () at ./../demo2.c:48
+48          Rectangle r = {.length = 0, .width = 0, .area = 0};
+(gdb) n
+49          printf("Enter length and width of rectangle: ");
+(gdb) n
+50          scanf("%f %f", &length, &width);
+(gdb) n
+Enter length and width of rectangle: 2 3
+52          r.length = length;
+(gdb) n
+53          r.width = width;
+(gdb) n
+55          return r;
+(gdb) n
+56      }
+(gdb) n
+main () at ./../demo2.c:17
+17          Rectangle r2 = input();
+(gdb) p r1
+$2 = {length = 2, width = 3, area = 0}
+(gdb) p r2
+$3 = {length = 0, width = 0, area = 0}
+(gdb) s
+input () at ./../demo2.c:48
+48          Rectangle r = {.length = 0, .width = 0, .area = 0};
+(gdb) n
+49          printf("Enter length and width of rectangle: ");
+(gdb) n
+50          scanf("%f %f", &length, &width);
+(gdb) n
+Enter length and width of rectangle: 3 4
+52          r.length = length;
+(gdb) n
+53          r.width = width;
+(gdb) n
+55          return r;
+(gdb) n
+56      }
+(gdb) n
+main () at ./../demo2.c:18
+18          Rectangle r3 = input();
+(gdb) p r2
+$4 = {length = 3, width = 4, area = 0}
+(gdb) p r3
+$5 = {length = 0, width = 0, area = 0}
+(gdb) s
+input () at ./../demo2.c:48
+48          Rectangle r = {.length = 0, .width = 0, .area = 0};
+(gdb) n
+49          printf("Enter length and width of rectangle: ");
+(gdb) n
+50          scanf("%f %f", &length, &width);
+(gdb) n
+Enter length and width of rectangle: 4 5
+52          r.length = length;
+(gdb) n
+53          r.width = width;
+(gdb) n
+55          return r;
+(gdb) n
+56      }
+(gdb) n
+main () at ./../demo2.c:20
+20          r1.area = calculate_area(r1);
+(gdb) p r3
+$6 = {length = 4, width = 5, area = 0}
+(gdb) s
+calculate_area (rect=...) at ./../demo2.c:43
+43          return rect.length * rect.width;
+(gdb) n
+44      }
+(gdb) n
+main () at ./../demo2.c:21
+21          r2.area = calculate_area(r2);
+(gdb) p r1
+$7 = {length = 2, width = 3, area = 6}
+(gdb) s
+calculate_area (rect=...) at ./../demo2.c:43
+43          return rect.length * rect.width;
+(gdb) n
+44      }
+(gdb) n
+main () at ./../demo2.c:22
+22          r3.area = calculate_area(r3);
+(gdb) p r2
+$8 = {length = 3, width = 4, area = 12}
+(gdb) n
+24          compare_areas(r1, r2, r3);
+(gdb) p r3
+$9 = {length = 4, width = 5, area = 20}
+(gdb) s
+compare_areas (r1=..., r2=..., r3=...) at ./../demo2.c:31
+31          if (r1.area > r2.area && r1.area > r3.area)
+(gdb) n
+33          else if (r2.area > r1.area && r2.area > r3.area)
+(gdb) n
+35          else if (r3.area > r1.area && r3.area > r2.area)
+(gdb) n
+36              printf("Rectangle 3 has the largest area\n");
+(gdb) n
+Rectangle 3 has the largest area
+main () at ./../demo2.c:26
+26          return 0;
+(gdb) n
+27      }
+(gdb) n
+__libc_start_call_main (main=main@entry=0x400486 <main>, argc=argc@entry=1, argv=argv@entry=0x7fffffffd8a8) at ../sysdeps/nptl/libc_start_call_main.h:74
+74        exit (result);
+(gdb) quit
