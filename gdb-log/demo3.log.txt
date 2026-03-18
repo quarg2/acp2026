@@ -1,0 +1,138 @@
+(gdb) l
+12      void input(int n, Rectangle rects[]);
+13      void calculate_area(int n, Rectangle rects[]);
+14      int findLargestArea(int n, Rectangle rects[]);
+15      void output(int largestIndex, Rectangle rects[]);
+16
+17      int main(void) {
+18          int n, max;
+19          printf("Enter number of rectangles: ");
+20          scanf("%d", &n);
+21
+(gdb) b 17
+Breakpoint 1 at 0x40048f: file ./../demo3.c, line 17.
+(gdb) r
+
+Breakpoint 1, main () at ./../demo3.c:17
+17      int main(void) {
+(gdb) n
+19          printf("Enter number of rectangles: ");
+(gdb) n
+20          scanf("%d", &n);
+(gdb) n
+Enter number of rectangles: 3 
+22          Rectangle rects[n];
+(gdb) n
+24          input(n, rects);
+(gdb) p rects
+$1 = {{length = 4.40810382e-39, width = 0, area = -nan(0x7fd728)}, {length = 4.59163468e-41, width = -nan(0x7fd720), area = 4.59163468e-41}, {
+    length = -1.03799886e+34, width = 4.59163468e-41, area = -nan(0x7fd750)}}
+(gdb) s
+input (n=3, rects=0x7fffffffd6f0) at ./../demo3.c:53
+53          for (int i = 0; i < n; i++) {
+(gdb) n
+54              printf("Enter length and breadth of %d rectangle: ", i + 1);
+(gdb) n
+55          scanf("%f %f", &rects[i].length, &rects[i].width);
+(gdb) n
+Enter length and breadth of 1 rectangle: 3 5
+53          for (int i = 0; i < n; i++) {
+(gdb) n
+54              printf("Enter length and breadth of %d rectangle: ", i + 1);
+(gdb) n
+55          scanf("%f %f", &rects[i].length, &rects[i].width);
+(gdb) n
+Enter length and breadth of 2 rectangle: 5 4
+53          for (int i = 0; i < n; i++) {
+(gdb) n
+54              printf("Enter length and breadth of %d rectangle: ", i + 1);
+(gdb) n
+55          scanf("%f %f", &rects[i].length, &rects[i].width);
+(gdb) n
+Enter length and breadth of 3 rectangle: 2 2
+53          for (int i = 0; i < n; i++) {
+(gdb) n
+57      }
+(gdb) n
+main () at ./../demo3.c:25
+25          printf("\n");
+(gdb) n
+
+26          calculate_area(n, rects);
+(gdb) s
+calculate_area (n=3, rects=0x7fffffffd6f0) at ./../demo3.c:46
+46          for (int i = 0; i < n; i++) {
+(gdb) n
+47              rects[i].area = rects[i].length * rects[i].width;
+(gdb) n
+48              printf("Rectangle %d has area %f\n", i + 1, rects[i].area);
+(gdb) n
+Rectangle 1 has area 15.000000
+46          for (int i = 0; i < n; i++) {
+(gdb) n
+47              rects[i].area = rects[i].length * rects[i].width;
+(gdb) n
+48              printf("Rectangle %d has area %f\n", i + 1, rects[i].area);
+(gdb) n
+Rectangle 2 has area 20.000000
+46          for (int i = 0; i < n; i++) {
+(gdb) n
+47              rects[i].area = rects[i].length * rects[i].width;
+(gdb) n
+48              printf("Rectangle %d has area %f\n", i + 1, rects[i].area);
+(gdb) n
+Rectangle 3 has area 4.000000
+46          for (int i = 0; i < n; i++) {
+(gdb) n
+50      }
+(gdb) n
+main () at ./../demo3.c:27
+27          printf("\n");
+(gdb) p rects
+$2 = {{length = 3, width = 5, area = 15}, {length = 5, width = 4, area = 20}, {length = 2, width = 2, area = 4}}
+(gdb) n
+
+28          max = findLargestArea(n, rects);
+(gdb) s
+findLargestArea (n=3, rects=0x7fffffffd6f0) at ./../demo3.c:33
+33          int max = 0;
+(gdb) n
+34          for (int i = 0; i < n; i++) {
+(gdb) n
+35              max = (rects[i].area > rects[max].area) ? i : max;
+(gdb) n
+34          for (int i = 0; i < n; i++) {
+(gdb) n
+35              max = (rects[i].area > rects[max].area) ? i : max;
+(gdb) n
+34          for (int i = 0; i < n; i++) {
+(gdb) n
+35              max = (rects[i].area > rects[max].area) ? i : max;
+(gdb) n
+34          for (int i = 0; i < n; i++) {
+(gdb) n
+37          return max;
+(gdb) p max
+$3 = 1
+(gdb) n
+38      }
+(gdb) n
+main () at ./../demo3.c:29
+29          output(max, rects);
+(gdb) s
+output (largestIndex=1, rects=0x7fffffffd6f0) at ./../demo3.c:42
+42               rects[largestIndex].area);
+(gdb) n
+41        printf("The rectangle with the largest area has area %f\n",
+(gdb) n
+The rectangle with the largest area has area 20.000000
+43      }
+(gdb) n
+main () at ./../demo3.c:30
+30      }
+(gdb) n
+__libc_start_call_main (main=main@entry=0x400486 <main>, argc=argc@entry=1, argv=argv@entry=0x7fffffffd878) at ../sysdeps/nptl/libc_start_call_main.h:74
+74        exit (result);
+(gdb) n
+[Inferior 1 (process 41456) exited normally]
+(gdb) quit
