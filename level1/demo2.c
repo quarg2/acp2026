@@ -38,10 +38,7 @@ void compare_areas(Rectangle r1, Rectangle r2, Rectangle r3) {
         printf("The rectangles have equal areas\n");
 }
 
-
-float calculate_area(Rectangle rect) {
-    return rect.length * rect.width;
-}
+float calculate_area(Rectangle rect) { return rect.length * rect.width; }
 
 Rectangle input(void) {
     float length, width;
@@ -50,7 +47,7 @@ Rectangle input(void) {
     scanf("%f %f", &length, &width);
 
     r.length = length;
-    r.width = width;
+    r.width  = width;
 
     return r;
 }
