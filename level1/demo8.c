@@ -9,7 +9,7 @@ void input(char* str);
 void concatenate_strings(char* str1, char* str2);
 void display(char* str);
 
-int main() {
+int main(void) {
     char s1[MAXLINE], s2[MAXLINE];
 
     input(s1);

@@ -8,7 +8,7 @@ void inputStrings(char str1[], char str2[]);
 int compareStrings(char str1[], char str2[]);
 void output(int result);
 
-int main() {
+int main(void) {
     int result;
     char str1[MAXLINE], str2[MAXLINE];
 

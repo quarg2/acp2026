@@ -43,11 +43,13 @@ int readFromBinaryFile(Student students[], const char *filename) {
     // Get file size then divide it by the size of the struct
     // to get number of structs
     fseek(f, 0L, SEEK_END);
-    count = (unsigned long) ftell(f) / sizeof(Student);
+    count = (unsigned long)ftell(f) / sizeof(Student);
     rewind(f);
     
     assert(count == fread(students, sizeof(Student), count, f));
 
+    fread(students, sizeof(Student), count, f);
+    
     fclose(f);
 
     return count;
